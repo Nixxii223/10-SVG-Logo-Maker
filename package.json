@@ -1,0 +1,30 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "name": "10-svg-logo-maker",
+  "description": "logo maker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "10-svg-logo-maker"
+  },
+  "keywords": [
+    "svg",
+    "logo",
+    "maker"
+  ],
+  "author": "Nicki Barrett",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.2.12"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

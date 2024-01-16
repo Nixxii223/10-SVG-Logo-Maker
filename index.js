@@ -1,4 +1,78 @@
+import inquirer from 'inquirer';
+import { writeFile } from 'fs/promises';
 
+inquirer.prompt([
+  {
+    type: 'input',
+    name: 'text',
+    message: 'Enter up to three characters:',
+  },
+  {
+    type: 'input',
+    name: 'textColor',
+    message: 'Enter text color (keyword or hex):',
+  },
+  {
+    type: 'input',
+    name: 'shape',
+    message: 'Choose shape (triangle, square, circle):',
+  },
+  {
+    type: 'input',
+    name: 'shapeColor',
+    message: 'Enter shape color (keyword or hex):',
+  },
+])
+.then(async userInput => {
+  // Continue with the rest of your code
+  await generateLogo(userInput);
+  console.log('Generated logo.svg');
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
+async function generateLogo(userInput) {
+    const svgContent = createSVG(userInput);
+  
+    // Save the SVG to a file
+    try {
+        await writeFile('logo.svg', svgContent);
+        console.log('SVG saved to logo.svg');
+      } catch (error) {
+        console.error('Error saving SVG:', error);
+      }
+  }
+
+function createSVG(userInput) {
+    const { shape, textColor, text, shapeColor } = userInput;
+
+  switch (shape.toLowerCase()) {
+    case 'triangle':
+      return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="150,0 0,200 300,200" fill="${shapeColor}" />
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="${textColor}">
+                  ${text}
+                </text>
+              </svg>`;
+    case 'square':
+      return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="${shapeColor}" />
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="${textColor}">
+                  ${text}
+                </text>
+              </svg>`;
+    case 'circle':
+      return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="100" r="100" fill="${shapeColor}" />
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="${textColor}">
+                  ${text}
+                </text>
+              </svg>`;
+    default:
+      throw new Error(`Invalid shape: ${shape}`);
+  }
+}
 
   
 

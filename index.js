@@ -24,7 +24,6 @@ inquirer.prompt([
   },
 ])
 .then(async userInput => {
-  // Continue with the rest of your code
   await generateLogo(userInput);
   console.log('Generated logo.svg');
 })

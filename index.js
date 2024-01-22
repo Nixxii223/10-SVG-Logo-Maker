@@ -1,6 +1,9 @@
+//imports inquirer to be used for the prompts
 import inquirer from 'inquirer';
+//imports the writeFile function from fs/promises to allow for using writeFile with promises
 import { writeFile } from 'fs/promises';
 
+//prompts the user for input on content of SVG logo
 inquirer.prompt([
   {
     type: 'input',
@@ -23,6 +26,7 @@ inquirer.prompt([
     message: 'Enter shape color (keyword or hex):',
   },
 ])
+//asynchronous function awaiting the generateLogo function to console log whether the logo was successful or if an error was caught
 .then(async userInput => {
   await generateLogo(userInput);
   console.log('Generated logo.svg');
@@ -31,10 +35,10 @@ inquirer.prompt([
   console.error('Error:', error);
 });
 
+//this function generates the SVG logo using the input from the user and saves the file or produces an error if the file is not saved
 async function generateLogo(userInput) {
     const svgContent = createSVG(userInput);
-  
-    // Save the SVG to a file
+
     try {
         await writeFile('logo.svg', svgContent);
         console.log('SVG saved to logo.svg');
@@ -43,6 +47,7 @@ async function generateLogo(userInput) {
       }
   }
 
+//returns the parameters for each shape   
 function createSVG(userInput) {
     const { shape, textColor, text, shapeColor } = userInput;
 
@@ -72,23 +77,3 @@ function createSVG(userInput) {
       throw new Error(`Invalid shape: ${shape}`);
   }
 }
-
-  
-
-
-
-
-  //GIVEN a command-line application that accepts user input
-// WHEN I am prompted for text
-// THEN I can enter up to three characters
-// WHEN I am prompted for the text color
-// THEN I can enter a color keyword (OR a hexadecimal number)
-// WHEN I am prompted for a shape
-// THEN I am presented with a list of shapes to choose from: circle, triangle, and square
-// WHEN I am prompted for the shape's color
-// THEN I can enter a color keyword (OR a hexadecimal number)
-// WHEN I have entered input for all the prompts
-// THEN an SVG file is created named `logo.svg`
-// AND the output text "Generated logo.svg" is printed in the command line
-// WHEN I open the `logo.svg` file in a browser
-// THEN I am shown a 300x200 pixel image that matches the criteria I entered

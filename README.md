@@ -22,7 +22,7 @@ Example SVG image:
 - https://www.npmjs.com/package/inquirer/v/8.2.4
 - https://www.npmjs.com/package/jest
 - https://jestjs.io/
-- I received help from ___, (TA) during office hours.
+- I received help from Jaytee Padilla, (TA) during office hours.
 
 ## License
 

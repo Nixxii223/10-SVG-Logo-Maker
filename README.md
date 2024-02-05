@@ -14,6 +14,9 @@ When prompted, provide answers for logo styling including text, text color, shap
 
 ![image](https://github.com/nickib223/10-SVG-Logo-Maker/assets/146459728/4cefae44-1fdd-48e4-aba2-8eb4a5331527)
 
+https://drive.google.com/file/d/1-ecX3u6XRRlzLcWE_tCAQVpj7iNPEBr9/view?usp=sharing
+
+
 Example SVG image: 
 ![logo example](https://github.com/nickib223/10-SVG-Logo-Maker/assets/146459728/6f0e95f8-3a6c-4e74-adf7-c39af5f64907)
 
